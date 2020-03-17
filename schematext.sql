@@ -4,7 +4,7 @@ USE imdbload;
 CREATE TABLE aka_name (
     id integer NOT NULL PRIMARY KEY,
     person_id integer NOT NULL,
-    name varchar(512),
+    name text NOTE NULL,
     imdb_index varchar(3),
     name_pcode_cf varchar(11),
     name_pcode_nf varchar(11),
@@ -15,7 +15,7 @@ CREATE TABLE aka_name (
 CREATE TABLE aka_title (
     id integer NOT NULL PRIMARY KEY,
     movie_id integer NOT NULL,
-    title varchar(1000),
+    title text NOT NULL,
     imdb_index varchar(4),
     kind_id integer NOT NULL,
     production_year integer,
@@ -23,7 +23,7 @@ CREATE TABLE aka_title (
     episode_of_id integer,
     season_nr integer,
     episode_nr integer,
-    note varchar(72),
+    note text,
     md5sum varchar(32)
 );
 
@@ -39,7 +39,7 @@ CREATE TABLE cast_info (
 
 CREATE TABLE char_name (
     id integer NOT NULL PRIMARY KEY,
-    name varchar(512) NOT NULL,
+    name text NOT NULL,
     imdb_index varchar(2),
     imdb_id integer,
     name_pcode_nf varchar(5),
@@ -54,7 +54,7 @@ CREATE TABLE comp_cast_type (
 
 CREATE TABLE company_name (
     id integer NOT NULL PRIMARY KEY,
-    name varchar(512) NOT NULL,
+    name text NOT NULL,
     country_code varchar(6),
     imdb_id integer,
     name_pcode_nf varchar(5),
@@ -81,7 +81,7 @@ CREATE TABLE info_type (
 
 CREATE TABLE keyword (
     id integer NOT NULL PRIMARY KEY,
-    keyword varchar(512) NOT NULL,
+    keyword text NOT NULL,
     phonetic_code varchar(5)
 );
 
@@ -100,6 +100,14 @@ CREATE TABLE movie_companies (
     movie_id integer NOT NULL,
     company_id integer NOT NULL,
     company_type_id integer NOT NULL,
+    note text
+);
+
+CREATE TABLE movie_info (
+    id integer NOT NULL PRIMARY KEY,
+    movie_id integer NOT NULL,
+    info_type_id integer NOT NULL,
+    info text NOT NULL,
     note text
 );
 
@@ -126,7 +134,7 @@ CREATE TABLE movie_link (
 
 CREATE TABLE name (
     id integer NOT NULL PRIMARY KEY,
-    name varchar(512) NOT NULL,
+    name text NOT NULL,
     imdb_index varchar(9),
     imdb_id integer,
     gender varchar(1),
@@ -136,6 +144,14 @@ CREATE TABLE name (
     md5sum varchar(32)
 );
 
+CREATE TABLE person_info (
+    id integer NOT NULL PRIMARY KEY,
+    person_id integer NOT NULL,
+    info_type_id integer NOT NULL,
+    info text NOT NULL,
+    note text
+);
+
 CREATE TABLE role_type (
     id integer NOT NULL PRIMARY KEY,
     role varchar(32) NOT NULL
@@ -143,7 +159,7 @@ CREATE TABLE role_type (
 
 CREATE TABLE title (
     id integer NOT NULL PRIMARY KEY,
-    title varchar(512) NOT NULL,
+    title text NOT NULL,
     imdb_index varchar(5),
     kind_id integer NOT NULL,
     production_year integer,
@@ -156,18 +172,3 @@ CREATE TABLE title (
     md5sum varchar(32)
 );
 
-CREATE TABLE movie_info (
-    id integer NOT NULL PRIMARY KEY,
-    movie_id integer NOT NULL,
-    info_type_id integer NOT NULL,
-    info text NOT NULL,
-    note text
-);
-
-CREATE TABLE person_info (
-    id integer NOT NULL PRIMARY KEY,
-    person_id integer NOT NULL,
-    info_type_id integer NOT NULL,
-    info text NOT NULL,
-    note text
-);
