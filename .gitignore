@@ -1,0 +1,6 @@
+*.csv
+data/
+csv_files/*
+!/csv_files/schematext.sql
+!/csv_files/fkindexes.sql
+

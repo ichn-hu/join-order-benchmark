@@ -26,7 +26,7 @@ load_data() {
     echo $sql > $sql_file
     echo $sql_file
     {
-       mysql -h 127.0.0.1 -u root -p123456 -D imdbload < $sql_file
+       mysql -h 127.0.0.1 -u hzf -D imdbload < $sql_file
        echo >&1000
     }& 
   done
