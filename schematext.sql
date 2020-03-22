@@ -4,7 +4,7 @@ USE imdbload;
 CREATE TABLE aka_name (
     id integer NOT NULL PRIMARY KEY,
     person_id integer NOT NULL,
-    name text NOTE NULL,
+    name text NOT NULL,
     imdb_index varchar(3),
     name_pcode_cf varchar(11),
     name_pcode_nf varchar(11),
